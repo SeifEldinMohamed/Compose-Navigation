@@ -28,7 +28,7 @@ fun HomeScreen(navController: NavHostController) {
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.clickable {
-                navController.navigate(Screen.Details.route)
+                navController.navigate(Screen.Details.passIdAndName(5, "SEif"))
             }
         )
     }
