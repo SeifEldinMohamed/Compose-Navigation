@@ -7,16 +7,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.seif.composenavigation.presentation.navigation.AUTH_GRAPH_ROUTE
 import com.seif.composenavigation.presentation.navigation.Screen
 
 @Composable
-fun HomeScreen(
+fun LoginScreen(
     navController: NavController
 ) {
     Column(
@@ -26,15 +26,10 @@ fun HomeScreen(
     ) {
         Text(
             modifier = Modifier.clickable {
-                navController.navigate(
-                    route = Screen.Details.passIdAndName(
-                        id = 11,
-                        name = "John"
-                    )
-                )
+                navController.navigate(route = Screen.SignUp.route)
             },
-            text = "Home",
-            color = MaterialTheme.colors.primary,
+            text = "Login",
+            color = Color.Magenta,
             fontSize = MaterialTheme.typography.h3.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -42,9 +37,10 @@ fun HomeScreen(
             modifier = Modifier
                 .padding(top = 150.dp)
                 .clickable {
-                    navController.navigate(AUTH_GRAPH_ROUTE)
+                    navController.popBackStack()
+                    navController.navigate(Screen.Details.passIdAndName())
                 },
-            text = "Login/Sign Up",
+            text = "Open Detail Screen",
             fontSize = MaterialTheme.typography.h6.fontSize,
             fontWeight = FontWeight.Medium
         )
@@ -53,8 +49,8 @@ fun HomeScreen(
 
 @Composable
 @Preview(showBackground = true)
-fun HomeScreenPreview() {
-    HomeScreen(
+fun LoginScreenPreview() {
+    LoginScreen(
         navController = rememberNavController()
     )
 }
